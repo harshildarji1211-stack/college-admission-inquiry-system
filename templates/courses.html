@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Our Courses</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- =========================
+     NAVIGATION
+========================= -->
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/admission">Admission</a>
+        <a href="/inquiry">Inquiry</a>
+        <a href="/admin">Admin Login</a>
+
+    </nav>
+
+
+    <!-- =========================
+     PAGE HEADER
+========================= -->
+
+    <section class="hero" style="min-height: 300px;">
+
+        <div>
+
+            <h1>Our Courses</h1>
+
+            <p>
+                Explore our undergraduate programs and
+                choose the right course for your future.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     COURSES
+========================= -->
+
+    <h1>Available Programs</h1>
+
+    <div class="course-grid">
+
+        {% for course in courses %}
+
+        <div class="course-card">
+
+            <h2>🎓 {{ course.course_name }}</h2>
+
+            <p>
+                <strong>Duration:</strong>
+                {{ course.duration }}
+            </p>
+
+            <p>
+                <strong>Eligibility:</strong>
+                {{ course.eligibility }}
+            </p>
+
+            <p>
+                <strong>Fees:</strong>
+                ₹{{ course.fees }}
+            </p>
+
+            <br>
+
+            <a href="/admission" class="hero-button">
+                Apply Now
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <h3 style="color:white;">
+            College Admission System
+        </h3>
+
+        <p>
+            Choose the right course. Build your future.
+        </p>
+
+        <p>
+            © 2026 College Admission System
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

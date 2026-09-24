@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admission Application</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- =========================
+     NAVIGATION
+========================= -->
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/admission">Admission</a>
+        <a href="/inquiry">Inquiry</a>
+        <a href="/admin">Admin Login</a>
+
+    </nav>
+
+
+    <!-- =========================
+     PAGE HEADER
+========================= -->
+
+    <section class="hero" style="min-height: 300px;">
+
+        <div>
+
+            <h1>Admission Application</h1>
+
+            <p>
+                Take the first step towards your future.
+                Fill in your details carefully and submit your application.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     APPLICATION FORM
+========================= -->
+
+    <h1>Student Application Form</h1>
+
+    <form action="/admission" method="POST">
+
+        <label>Student Name</label>
+
+        <input type="text" name="student_name" placeholder="Enter your full name" required>
+
+
+        <label>Email Address</label>
+
+        <input type="email" name="email" placeholder="Enter your email address" required>
+
+
+        <label>Mobile Number</label>
+
+        <input type="tel" name="mobile" placeholder="Enter your mobile number" required>
+
+
+        <label>Select Course</label>
+
+        <select name="course" required>
+
+            <option value="">
+                -- Select a Course --
+            </option>
+
+            {% for course in courses %}
+
+            <option value="{{ course.course_name }}">
+                {{ course.course_name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label>Highest Qualification</label>
+
+        <input type="text" name="qualification" placeholder="Example: 12th Pass" required>
+
+
+        <label>Percentage</label>
+
+        <input type="number" name="percentage" step="0.01" min="0" max="100" placeholder="Enter your percentage"
+            required>
+
+
+        <label>Address</label>
+
+        <textarea name="address" placeholder="Enter your complete address" required></textarea>
+
+
+        <button type="submit">
+            Submit Application
+        </button>
+
+    </form>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <h3 style="color:white;">
+            College Admission System
+        </h3>
+
+        <p>
+            Your future starts here.
+        </p>
+
+        <p>
+            © 2026 College Admission System
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

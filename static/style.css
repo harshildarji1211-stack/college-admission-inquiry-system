@@ -1,0 +1,460 @@
+/* =========================================
+   COLLEGE ADMISSION SYSTEM
+   MODERN PROFESSIONAL CSS
+   ========================================= */
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+
+/* ---------- NAVIGATION ---------- */
+
+nav {
+    background: linear-gradient(135deg, #173b70, #2563a6);
+    padding: 18px 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 18px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ffd166;
+    left: 50%;
+    bottom: -7px;
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/* ---------- HEADINGS ---------- */
+
+h1 {
+    color: #173b70;
+    text-align: center;
+    margin: 40px 0 25px;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+h2 {
+    color: #173b70;
+    margin: 30px 0 18px;
+    font-size: 26px;
+}
+
+h3 {
+    color: #374151;
+    margin: 20px 0 12px;
+}
+
+
+/* ---------- GENERAL LINKS ---------- */
+
+a {
+    color: #2563a6;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #173b70;
+}
+
+
+/* ---------- FORMS ---------- */
+
+form {
+    background: white;
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+}
+
+label {
+    font-weight: 600;
+    color: #374151;
+    display: block;
+    margin-top: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px 15px;
+    margin: 8px 0 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #f9fafb;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563a6;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(37, 99, 166, 0.12);
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+button {
+    background: linear-gradient(135deg, #2563a6, #173b70);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(37, 99, 166, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 16px rgba(37, 99, 166, 0.3);
+}
+
+
+/* ---------- TABLES ---------- */
+
+table {
+    width: 94%;
+    margin: 25px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+th {
+    background: linear-gradient(135deg, #173b70, #2563a6);
+    color: white;
+    padding: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+td {
+    padding: 13px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 14px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: #f7faff;
+}
+
+
+/* ---------- DASHBOARD STATISTICS ---------- */
+
+.dashboard-stats {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 1100px;
+}
+
+.stat-card {
+    background: white;
+    width: 220px;
+    padding: 28px 20px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #2563a6;
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.stat-card h2 {
+    font-size: 36px;
+    color: #2563a6;
+    margin: 0;
+}
+
+.stat-card p {
+    margin-top: 7px;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+
+/* ---------- DASHBOARD SECTIONS ---------- */
+
+.dashboard-section {
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.dashboard-section h2 {
+    padding-left: 10px;
+    border-left: 5px solid #2563a6;
+}
+
+
+/* ---------- LOGOUT BUTTON ---------- */
+
+.logout-button {
+    display: block;
+    width: fit-content;
+    margin: 15px auto 30px;
+    text-decoration: none;
+}
+
+.logout-button button {
+    background: linear-gradient(135deg, #dc3545, #b91c1c);
+}
+
+.logout-button button:hover {
+    box-shadow: 0 7px 16px rgba(220, 53, 69, 0.3);
+}
+
+
+/* ---------- COURSE CARDS ---------- */
+
+.course-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ---------- HERO SECTION ---------- */
+
+.hero {
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg,
+            #173b70,
+            #2563a6,
+            #3b82c4);
+    color: white;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: auto;
+    opacity: 0.95;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 28px;
+    background: white;
+    color: #173b70;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+    color: #173b70;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ---------- COURSE GRID ---------- */
+
+.course-grid {
+    width: 90%;
+    max-width: 1100px;
+    margin: 35px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+
+/* ---------- SUCCESS MESSAGE ---------- */
+
+.success-message {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 18px;
+    background: #dcfce7;
+    color: #166534;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    margin-top: 60px;
+    padding: 30px 20px;
+    text-align: center;
+    background: #173b70;
+    color: white;
+}
+
+footer p {
+    margin: 5px;
+    opacity: 0.9;
+}
+
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media (max-width: 768px) {
+
+    nav {
+        padding: 15px 10px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px 9px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    form {
+        width: 92%;
+        padding: 22px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .stat-card {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .hero {
+        min-height: 380px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+}
+
+
+/* ---------- SMALL MOBILE ---------- */
+
+@media (max-width: 480px) {
+
+    nav a {
+        display: block;
+        margin: 10px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

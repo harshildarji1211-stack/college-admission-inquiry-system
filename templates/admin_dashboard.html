@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- =========================
+     NAVIGATION
+========================= -->
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/admission">Admission</a>
+        <a href="/inquiry">Inquiry</a>
+        <a href="/admin/dashboard">Dashboard</a>
+
+    </nav>
+
+
+    <!-- =========================
+     DASHBOARD HEADER
+========================= -->
+
+    <section class="hero" style="min-height: 260px;">
+
+        <div>
+
+            <h1>🎓 Admin Dashboard</h1>
+
+            <p>
+                Manage students, applications, inquiries and courses
+                from one place.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     STATISTICS
+========================= -->
+
+    <h1>Dashboard Overview</h1>
+
+    <div class="dashboard-stats">
+
+        <div class="stat-card">
+
+            <h2>{{ total_applications }}</h2>
+
+            <p>
+                📋 Total Applications
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h2>{{ pending_applications }}</h2>
+
+            <p>
+                ⏳ Pending Applications
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h2>{{ total_inquiries }}</h2>
+
+            <p>
+                💬 Total Inquiries
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <h2>{{ total_courses }}</h2>
+
+            <p>
+                📚 Total Courses
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+     LOGOUT
+========================= -->
+
+    <a href="/logout" class="logout-button">
+
+        <button>
+            Logout
+        </button>
+
+    </a>
+
+
+    <!-- =========================
+     APPLICATIONS
+========================= -->
+
+    <section class="dashboard-section">
+
+        <h2>📋 Student Applications</h2>
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Course</th>
+                <th>Qualification</th>
+                <th>Percentage</th>
+                <th>Address</th>
+                <th>Status</th>
+
+            </tr>
+
+
+            {% for application in applications %}
+
+            <tr>
+
+                <td>
+                    {{ application.application_id }}
+                </td>
+
+                <td>
+                    {{ application.student_name }}
+                </td>
+
+                <td>
+                    {{ application.email }}
+                </td>
+
+                <td>
+                    {{ application.mobile }}
+                </td>
+
+                <td>
+                    {{ application.course }}
+                </td>
+
+                <td>
+                    {{ application.qualification }}
+                </td>
+
+                <td>
+                    {{ application.percentage }}%
+                </td>
+
+                <td>
+                    {{ application.address }}
+                </td>
+
+                <td>
+
+                    <form action="/update_application_status" method="POST" style="box-shadow:none;
+                             padding:0;
+                             margin:0;
+                             width:auto;">
+
+                        <input type="hidden" name="application_id" value="{{ application.application_id }}">
+
+                        <select name="status">
+
+                            <option value="Pending" {% if application.status=="Pending" %} selected {% endif %}>
+                                Pending
+                            </option>
+
+                            <option value="Approved" {% if application.status=="Approved" %} selected {% endif %}>
+                                Approved
+                            </option>
+
+                            <option value="Rejected" {% if application.status=="Rejected" %} selected {% endif %}>
+                                Rejected
+                            </option>
+
+                        </select>
+
+                        <button type="submit">
+                            Update
+                        </button>
+
+                    </form>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+
+    <!-- =========================
+     INQUIRIES
+========================= -->
+
+    <section class="dashboard-section">
+
+        <h2>💬 Student Inquiries</h2>
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Course</th>
+                <th>Message</th>
+                <th>Status</th>
+
+            </tr>
+
+
+            {% for inquiry in inquiries %}
+
+            <tr>
+
+                <td>
+                    {{ inquiry.inquiry_id }}
+                </td>
+
+                <td>
+                    {{ inquiry.student_name }}
+                </td>
+
+                <td>
+                    {{ inquiry.email }}
+                </td>
+
+                <td>
+                    {{ inquiry.mobile }}
+                </td>
+
+                <td>
+                    {{ inquiry.course }}
+                </td>
+
+                <td>
+                    {{ inquiry.message }}
+                </td>
+
+                <td>
+
+                    <form action="/update_inquiry_status" method="POST" style="box-shadow:none;
+                             padding:0;
+                             margin:0;
+                             width:auto;">
+
+                        <input type="hidden" name="inquiry_id" value="{{ inquiry.inquiry_id }}">
+
+                        <select name="status">
+
+                            <option value="Pending" {% if inquiry.status=="Pending" %} selected {% endif %}>
+                                Pending
+                            </option>
+
+                            <option value="Replied" {% if inquiry.status=="Replied" %} selected {% endif %}>
+                                Replied
+                            </option>
+
+                            <option value="Resolved" {% if inquiry.status=="Resolved" %} selected {% endif %}>
+                                Resolved
+                            </option>
+
+                        </select>
+
+                        <button type="submit">
+                            Update
+                        </button>
+
+                    </form>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+
+    <!-- =========================
+     COURSE MANAGEMENT
+========================= -->
+
+    <section class="dashboard-section">
+
+        <h2>📚 Course Management</h2>
+
+
+        <!-- ADD COURSE -->
+
+        <form action="/add_course" method="POST">
+
+            <h3>Add New Course</h3>
+
+            <input type="text" name="course_name" placeholder="Course Name" required>
+
+            <input type="text" name="duration" placeholder="Duration" required>
+
+            <input type="text" name="eligibility" placeholder="Eligibility" required>
+
+            <input type="number" step="0.01" name="fees" placeholder="Fees" required>
+
+            <button type="submit">
+                ➕ Add Course
+            </button>
+
+        </form>
+
+
+        <!-- EXISTING COURSES -->
+
+        <h3 style="text-align:center;">
+            Existing Courses
+        </h3>
+
+        <table>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Course Name</th>
+                <th>Duration</th>
+                <th>Eligibility</th>
+                <th>Fees</th>
+                <th>Action</th>
+
+            </tr>
+
+
+            {% for course in courses %}
+
+            <tr>
+
+                <td>
+                    {{ course.course_id }}
+                </td>
+
+                <td>
+                    {{ course.course_name }}
+                </td>
+
+                <td>
+                    {{ course.duration }}
+                </td>
+
+                <td>
+                    {{ course.eligibility }}
+                </td>
+
+                <td>
+                    ₹{{ course.fees }}
+                </td>
+
+                <td>
+
+                    <a href="/edit_course/{{ course.course_id }}">
+                        ✏️ Edit
+                    </a>
+
+                    <br><br>
+
+                    <form action="/delete_course/{{ course.course_id }}" method="POST" style="box-shadow:none;
+                           padding:0;
+                           margin:0;
+                           width:auto;" onsubmit="return confirm(
+                        'Are you sure you want to delete this course?'
+                    );">
+
+                        <button type="submit">
+                            🗑️ Delete
+                        </button>
+
+                    </form>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <h3 style="color:white;">
+            College Admission System
+        </h3>
+
+        <p>
+            Administration & Management Portal
+        </p>
+
+        <p>
+            © 2026 College Admission System
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
